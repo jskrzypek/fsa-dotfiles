@@ -5,7 +5,7 @@
 3. Go through each setting in the `.osx` file and comment out the settings you don't want to apply (or uncomment the ones you want). In general, if a setting doesn't make sense to you, probably best to comment it out.
 4. type `./.osx` in your terminal to apply all these settings (you will have to restart after doing this)
 5. Copy the `.aliases` file to your home directory using command: `cp .aliases ~`
-6. Add the line: `source .aliases` to your `~/.bashrc` file.
+6. Add the line: `source .aliases` to your `~/.bashrc` OR `~/.bash_profile` file.
 7. Look through the aliases file to learn the new aliases that you can use on your terminal and Feel the Power!
 
 Raise your hand if you have questions.
