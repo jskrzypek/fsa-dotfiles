@@ -10,6 +10,11 @@
 
 Raise your hand if you have questions.
 
+The original instructions of this repo are below, you DO NOT need to follow the Installation instructions outlined below.
+<br><br><br>
+
+--
+
 # Mathias’s dotfiles
 
 ## Installation
