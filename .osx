@@ -58,7 +58,7 @@ sudo nvram SystemAudioVolume=" "
 # defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
 
 ### Increase window resize speed for Cocoa applications
-defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
+# defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
 
 ### Expand save panel by default
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
@@ -89,7 +89,7 @@ defaults write NSGlobalDomain NSDisableAutomaticTermination -bool true
 #defaults write com.apple.CrashReporter DialogType -string "none"
 
 ### Set Help Viewer windows to non-floating mode
-defaults write com.apple.helpviewer DevMode -bool true
+# defaults write com.apple.helpviewer DevMode -bool true
 
 ### Fix for the ancient UTF-8 bug in QuickLook (http://mths.be/bbo)
 ### Commented out, as this is known to cause problems in various Adobe apps :(
@@ -101,7 +101,7 @@ defaults write com.apple.helpviewer DevMode -bool true
 sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
 
 ### Restart automatically if the computer freezes
-systemsetup -setrestartfreeze on
+# systemsetup -setrestartfreeze on
 
 ### Never go into computer sleep mode
 # systemsetup -setcomputersleep Off > /dev/null
@@ -122,18 +122,20 @@ defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 ### SSD-specific tweaks                                                         #
 ###############################################################################
 
-### Disable local Time Machine snapshots
-sudo tmutil disablelocal
+### Disable local Time Machine snapshots that take up tons of space
+# sudo tmutil disablelocal
 
 ### Disable hibernation (speeds up entering sleep mode)
-sudo pmset -a hibernatemode 0
+# sudo pmset -a hibernatemode 0
 
 ### Remove the sleep image file to save disk space
-sudo rm /Private/var/vm/sleepimage
+# sudo rm /Private/var/vm/sleepimage
+
 ### Create a zero-byte file instead…
-sudo touch /Private/var/vm/sleepimage
+# sudo touch /Private/var/vm/sleepimage
+
 ### …and make sure it can’t be rewritten
-sudo chflags uchg /Private/var/vm/sleepimage
+# sudo chflags uchg /Private/var/vm/sleepimage
 
 ### Disable the sudden motion sensor as it’s not useful for SSDs
 # sudo pmset -a sms 0
@@ -177,7 +179,7 @@ defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 defaults write NSGlobalDomain KeyRepeat -int 1
 
 ### Set a shorter Delay until key repeat
-defaults write NSGlobalDomain InitialKeyRepeat -int 11
+defaults write NSGlobalDomain InitialKeyRepeat -int 21
 
 ### Automatically illuminate built-in MacBook keyboard in low light
 defaults write com.apple.BezelServices kDim -bool true
@@ -214,7 +216,7 @@ defaults write com.apple.BezelServices kDimTime -int 300
 defaults write com.apple.screencapture location -string "${HOME}/Desktop"
 
 ### Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
-defaults write com.apple.screencapture type -string "png"
+# defaults write com.apple.screencapture type -string "png"
 
 ### Disable shadow in screenshots
 defaults write com.apple.screencapture disable-shadow -bool true
@@ -290,12 +292,12 @@ defaults write com.apple.frameworks.diskimages auto-open-rw-root -bool true
 defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool true
 
 ### Show item info near icons on the desktop and in other icon views
-/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
+# /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
+# /usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
+# /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
 
 ### Show item info to the right of the icons on the desktop
-/usr/libexec/PlistBuddy -c "Set DesktopViewSettings:IconViewSettings:labelOnBottom false" ~/Library/Preferences/com.apple.finder.plist
+# /usr/libexec/PlistBuddy -c "Set DesktopViewSettings:IconViewSettings:labelOnBottom false" ~/Library/Preferences/com.apple.finder.plist
 
 ### Enable snap-to-grid for icons on the desktop and in other icon views
 # /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
@@ -383,7 +385,7 @@ defaults write com.apple.dock expose-group-by-app -bool false
 defaults write com.apple.dock dashboard-in-overlay -bool true
 
 ### Don’t automatically rearrange Spaces based on most recent use
-defaults write com.apple.dock mru-spaces -bool false
+# defaults write com.apple.dock mru-spaces -bool false
 
 ### Remove the auto-hiding Dock delay
 # defaults write com.apple.dock autohide-delay -float 0
@@ -400,10 +402,10 @@ defaults write com.apple.dock mru-spaces -bool false
 defaults write com.apple.dock showhidden -bool true
 
 ### Reset Launchpad
-find ~/Library/Application\ Support/Dock -name "*.db" -maxdepth 1 -delete
+# find ~/Library/Application\ Support/Dock -name "*.db" -maxdepth 1 -delete
 
 ### Add iOS Simulator to Launchpad
-sudo ln -sf /Applications/Xcode.app/Contents/Applications/iPhone\ Simulator.app /Applications/iOS\ Simulator.app
+# sudo ln -sf /Applications/Xcode.app/Contents/Applications/iPhone\ Simulator.app /Applications/iOS\ Simulator.app
 
 ### Add a spacer to the left side of the Dock (where the applications are)
 #defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}'
@@ -446,10 +448,10 @@ defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled -bool true
 
 ### Hide Safari’s bookmarks bar by default
-defaults write com.apple.Safari ShowFavoritesBar -bool false
+#defaults write com.apple.Safari ShowFavoritesBar -bool false
 
 ### Hide Safari’s sidebar in Top Sites
-defaults write com.apple.Safari ShowSidebarInTopSites -bool false
+#defaults write com.apple.Safari ShowSidebarInTopSites -bool false
 
 ### Disable Safari’s thumbnail cache for History and Top Sites
 defaults write com.apple.Safari DebugSnapshotsUpdatePolicy -int 2
@@ -589,16 +591,17 @@ defaults write com.apple.ActivityMonitor SortDirection -int 0
 ###############################################################################
 
 ### Enable the debug menu in Address Book
-defaults write com.apple.addressbook ABShowDebugMenu -bool true
+# defaults write com.apple.addressbook ABShowDebugMenu -bool true
 
 ### Enable Dashboard dev mode (allows keeping widgets on the desktop)
 # defaults write com.apple.dashboard devmode -bool true
 
 ### Enable the debug menu in iCal (pre-10.8)
-defaults write com.apple.iCal IncludeDebugMenu -bool true
+# defaults write com.apple.iCal IncludeDebugMenu -bool true
 
 ### Use plain text mode for new TextEdit documents
 defaults write com.apple.TextEdit RichText -int 0
+
 ### Open and save files as UTF-8 in TextEdit
 defaults write com.apple.TextEdit PlainTextEncoding -int 4
 defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
@@ -615,7 +618,7 @@ defaults write com.apple.DiskUtility advanced-image-options -bool true
 defaults write com.apple.appstore WebKitDeveloperExtras -bool true
 
 ### Enable Debug Menu in the Mac App Store
-defaults write com.apple.appstore ShowDebugMenu -bool true
+# defaults write com.apple.appstore ShowDebugMenu -bool true
 
 ###############################################################################
 ### Messages                                                                    #
@@ -660,7 +663,7 @@ defaults write com.google.Chrome.canary ExtensionInstallSources -array "https://
 ###############################################################################
 
 ### Install Sublime Text settings
-cp -r init/Preferences.sublime-settings ~/Library/Application\ Support/Sublime\ Text*/Packages/User/Preferences.sublime-settings 2> /dev/null
+# cp -r init/Preferences.sublime-settings ~/Library/Application\ Support/Sublime\ Text*/Packages/User/Preferences.sublime-settings 2> /dev/null
 
 ###############################################################################
 ### Transmission.app                                                            #
@@ -689,13 +692,13 @@ cp -r init/Preferences.sublime-settings ~/Library/Application\ Support/Sublime\ 
 defaults write com.twitter.twitter-mac AutomaticQuoteSubstitutionEnabled -bool false
 
 ### Show the app window when clicking the menu bar icon
-defaults write com.twitter.twitter-mac MenuItemBehavior -int 1
+# defaults write com.twitter.twitter-mac MenuItemBehavior -int 1
 
 ### Enable the hidden ‘Develop’ menu
 defaults write com.twitter.twitter-mac ShowDevelopMenu -bool true
 
 ### Open links in the background
-defaults write com.twitter.twitter-mac openLinksInBackground -bool true
+# defaults write com.twitter.twitter-mac openLinksInBackground -bool true
 
 ### Allow closing the ‘new tweet’ window by pressing `Esc`
 defaults write com.twitter.twitter-mac ESCClosesComposeWindow -bool true
